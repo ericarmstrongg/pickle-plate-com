@@ -1,11 +1,13 @@
 :root {
-  --green: #4a7c2a;
-  --green-dark: #3a6320;
-  --green-light: #e8f3df;
-  --cream: #faf8f3;
-  --ink: #1f2a17;
-  --muted: #5a6650;
-  --border: #e2e6dc;
+  --green: #7FB63A;
+  --green-dark: #3F6F1F;
+  --green-deep: #16361E;
+  --green-light: #FFF3C4;
+  --cream: #FAF7F0;
+  --ink: #1F241F;
+  --gold: #F4C542;
+  --muted: #5e6b50;
+  --border: #e8e2d4;
   --radius: 14px;
   --max: 1100px;
 }
@@ -51,8 +53,8 @@ a:hover { text-decoration: underline; }
   color: var(--ink);
 }
 .brand img {
-  width: 36px;
-  height: 36px;
+  height: 48px;
+  width: auto;
   border-radius: 8px;
 }
 .nav-cta {
@@ -87,17 +89,17 @@ a:hover { text-decoration: underline; }
   margin: 0 0 32px;
 }
 .hero-phone {
-  background: var(--green-light);
   border-radius: 32px;
   aspect-ratio: 9/16;
   max-width: 360px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  font-size: 14px;
-  border: 2px dashed var(--border);
+  overflow: hidden;
+}
+.hero-phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* App Store badge */
@@ -137,7 +139,7 @@ section { padding: 80px 0; }
   margin: 0 0 48px;
 }
 
-/* Features */
+/* Features / How it works (combined) */
 .features {
   background: white;
   border-top: 1px solid var(--border);
@@ -174,57 +176,33 @@ section { padding: 80px 0; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  margin-top: 48px;
 }
 .screenshot {
-  background: var(--green-light);
   aspect-ratio: 9/16;
   border-radius: 24px;
-  border: 2px dashed var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  font-size: 14px;
-  text-align: center;
-  padding: 16px;
+  overflow: hidden;
 }
-
-/* How it works */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  counter-reset: step;
+.screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
-.step {
-  position: relative;
-  padding-top: 16px;
-}
-.step::before {
-  counter-increment: step;
-  content: counter(step);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: var(--green);
-  color: white;
-  border-radius: 999px;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-.step h3 { margin: 0 0 6px; font-size: 19px; }
-.step p { margin: 0; color: var(--muted); }
 
 /* CTA */
 .cta {
-  background: var(--green);
+  background: var(--green-deep);
   color: white;
   text-align: center;
 }
 .cta h2 { color: white; font-size: 36px; margin: 0 0 16px; letter-spacing: -0.02em; }
-.cta p { color: rgba(255,255,255,0.85); font-size: 18px; margin: 0 0 28px; }
+.cta p { color: rgba(255,255,255,0.75); font-size: 18px; margin: 0 0 28px; }
+.cta .app-store-badge {
+  background: var(--gold);
+  color: var(--green-deep);
+}
+.cta .app-store-badge:hover { background: #e8b830; }
 
 /* Footer */
 .site-footer {
@@ -245,7 +223,8 @@ section { padding: 80px 0; }
 
 /* Legal pages */
 .legal {
-  padding: 60px 0 80px;
+  padding-top: 60px;
+  padding-bottom: 80px;
   max-width: 760px;
 }
 .legal h1 { font-size: 38px; margin: 0 0 8px; letter-spacing: -0.02em; }
@@ -256,11 +235,19 @@ section { padding: 80px 0; }
 
 /* Responsive */
 @media (max-width: 800px) {
-  .hero { padding: 50px 0 30px; }
-  .hero .container { grid-template-columns: 1fr; gap: 40px; }
-  .hero h1 { font-size: 38px; }
-  section { padding: 56px 0; }
-  .section-title { font-size: 30px; }
-  .feature-grid, .screenshot-row, .steps { grid-template-columns: 1fr; }
+  .hero { padding: 48px 0 32px; }
+  .hero .container { grid-template-columns: 1fr; gap: 36px; }
+  .hero h1 { font-size: 36px; }
+  .hero p.lead { font-size: 17px; }
+  .hero-phone { max-width: 260px; }
+  section { padding: 52px 0; }
+  .section-title { font-size: 28px; }
+  .section-intro { font-size: 16px; margin-bottom: 32px; }
+  .feature-grid, .screenshot-row { grid-template-columns: 1fr; gap: 20px; }
+  .cta h2 { font-size: 28px; }
+  .cta p { font-size: 16px; }
   .site-footer .container { flex-direction: column; text-align: center; }
+  .legal { padding-top: 40px; padding-bottom: 56px; }
+  .legal h1 { font-size: 28px; }
+  .legal h2 { font-size: 18px; margin-top: 28px; }
 }
